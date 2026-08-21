@@ -6,8 +6,6 @@ import java.util.Scanner;
 public class Estacionamiento {
 
     private static String[][] parqueo = new String[8][8];
-
-    // Variables para Entrada y Salida
     private static int entradaFila, entradaCol;
     private static int salidaFila, salidaCol;
 
@@ -90,5 +88,52 @@ public class Estacionamiento {
         System.out.println("2. Retirar vehículo");
         System.out.println("7. Salir");
         System.out.print("Seleccione una opción: ");
+    }
+
+    private static boolean validarPlaca(String placa) {
+        if (placa == null || placa.length() != 7) return false;
+        if (placa.charAt(0) != 'P') return false;
+
+        for (int i = 1; i <= 3; i++) {
+            if (!Character.isDigit(placa.charAt(i))) return false;
+        }
+
+        for (int i = 4; i <= 6; i++) {
+            char c = placa.charAt(i);
+            if (!Character.isUpperCase(c) || !Character.isLetter(c)) return false;
+        }
+        return true;
+    }
+
+    private static int[] buscarPlaca(String placa) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (parqueo[i][j].equals(placa)) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        return null;
+    }
+
+    private static boolean estacionamientoLleno() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (parqueo[i][j].equals("L")) return false;
+            }
+        }
+        return true;
+    }
+
+    private static int pedirEnteroRango(String mensaje, int min, int max) {
+        int val;
+        while (true) {
+            System.out.print(mensaje);
+            try {
+                val = Integer.parseInt(scanner.nextLine());
+                if (val >= min && val <= max) return val;
+            } catch (NumberFormatException ignored) {}
+            System.out.printf("Error: Debe ingresar un entero entre %d y %d.\n", min, max);
+        }
     }
 }
