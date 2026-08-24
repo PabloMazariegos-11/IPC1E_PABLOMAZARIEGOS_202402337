@@ -1,5 +1,6 @@
 
 
+import java.nio.charset.CharacterCodingException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -133,11 +134,11 @@ public class Estacionamiento {
             return;
         }
 
-        System.out.print("Ingrese la placa (Formato P###LLL): ");
+        System.out.print("Ingrese la placa (Formato P#L##Ll): ");
         String placa = scanner.nextLine().trim();
 
         if (!validarPlaca(placa)) {
-            System.out.println("Error: Formato de placa inválido. Debe ser P###LLL (Ej: P401JZQ, solo mayúsculas).");
+            System.out.println("Error: Formato de placa inválido./8*9 Debe ser P###LLL (Ej: P401JZQ, solo mayúsculas).");
             return;
         }
 
@@ -317,16 +318,24 @@ public class Estacionamiento {
     private static boolean validarPlaca(String placa) {
         if (placa == null || placa.length() != 7) return false;
         if (placa.charAt(0) != 'P') return false;
+      
+        if (placa.charAt(0)!= 'P') return false;
+            
+        if (!Character.isDigit(placa.charAt(1))) return false;
+        
+        char c2 =placa.charAt(2);
+        if (c2 < 'A'|| c2 > 'Z')return false;
 
-        for (int i = 1; i <= 3; i++) {
-            if (!Character.isDigit(placa.charAt(i))) return false;
-        }
+        if (!Character.isDigit(placa.charAt(3)) || !Character.isDigit(placa.charAt(4))) return false;
 
-        for (int i = 4; i <= 6; i++) {
-            char c = placa.charAt(i);
-            if (c < 'A' || c > 'Z') return false;
-        }
-        return true;
+        char c5 = placa.charAt(5);
+        char c6 = placa.charAt(6);
+
+        boolean esC5Valido = (c5 >= 'A' && c5 <= 'Z') || (c5 >= 'a' && c5 <= 'z');
+        boolean esC6Valido = (c6 >= 'A' && c6 <= 'Z') || (c6 >= 'a' && c6 <= 'z');
+
+        return esC5Valido && esC6Valido;
+
     }
 
     // Búsqueda de la placa en el parqueo interno (1..8, 1..8)
