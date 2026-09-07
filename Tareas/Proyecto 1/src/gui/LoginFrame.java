@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import model.Usuario;
 import service.AuthService;
 import service.BitacoraService;
 
@@ -96,12 +97,13 @@ public class LoginFrame extends JFrame {
         boolean exito = authService.autenticar(user, pass);
 
         if (exito) {
-            String usuarioLogueado = authService.getUsuarioLogueado().getUsuario();
-            bitacoraService.registrarAccion(fechaHora, usuarioLogueado, 
+            Usuario usuarioLogueado = authService.getUsuarioLogueado();
+            bitacoraService.registrarAccion(fechaHora, usuarioLogueado.getUsuario(), 
                 "AUTENTICACION", "LOGIN_OK", "Inicio de sesión correcto");
             
-            JOptionPane.showMessageDialog(this, "Bienvenido, " + usuarioLogueado + "!");
-            // Aquí abriremos el MenuPrincipalFrame en la siguiente etapa
+            // Redirección directa al Menú Principal enviando el objeto Usuario
+            MenuPrincipalFrame menu = new MenuPrincipalFrame(usuarioLogueado, authService, bitacoraService);
+            menu.setVisible(true);
             this.dispose();
         } else {
             int intentos = authService.getIntentosFallidos();

@@ -49,6 +49,9 @@ public class AuthService {
         }
         return false;
     }
+    public void cerrarSesion() {
+        this.usuarioLogueado = null;
+    }
 
     public boolean isSesionBloqueada() { return sesionBloqueada; }
     public int getIntentosFallidos() { return intentosFallidos; }
