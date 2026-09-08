@@ -2,9 +2,8 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import model.Usuario;
+import service.AdoptanteService;
 import service.AnimalService;
 import service.AuthService;
 import service.BitacoraService;
@@ -14,12 +13,14 @@ public class MenuPrincipalFrame extends JFrame {
     private AuthService authService;
     private BitacoraService bitacoraService;
     private AnimalService animalService;
+    private AdoptanteService adoptanteService;
 
     public MenuPrincipalFrame(Usuario usuarioLogueado, AuthService authService, BitacoraService bitacoraService) {
         this.usuarioLogueado = usuarioLogueado;
         this.authService = authService;
         this.bitacoraService = bitacoraService;
         this.animalService = new AnimalService(100);
+        this.adoptanteService = new AdoptanteService(100);
 
         setTitle("Centro de Rescate Animal - Menú Principal");
         setSize(500, 420);
@@ -67,23 +68,24 @@ public class MenuPrincipalFrame extends JFrame {
         btnLogout.setBounds(180, 335, 120, 28);
         panel.add(btnLogout);
 
-        btnAnimales.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AnimalesFrame animalesFrame = new AnimalesFrame(usuarioLogueado, animalService, bitacoraService, MenuPrincipalFrame.this);
-                animalesFrame.setVisible(true);
-                setVisible(false);
-            }
+        // Eventos
+        btnAnimales.addActionListener(e -> {
+            AnimalesFrame animalesFrame = new AnimalesFrame(usuarioLogueado, animalService, bitacoraService, MenuPrincipalFrame.this);
+            animalesFrame.setVisible(true);
+            setVisible(false);
         });
 
-        btnLogout.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                authService.cerrarSesion();
-                LoginFrame login = new LoginFrame(authService, bitacoraService);
-                login.setVisible(true);
-                dispose();
-            }
+        btnAdoptantes.addActionListener(e -> {
+            AdoptanteFrame adoptantesFrame = new AdoptanteFrame(usuarioLogueado, adoptanteService, bitacoraService, MenuPrincipalFrame.this);
+            adoptantesFrame.setVisible(true);
+            setVisible(false);
+        });
+
+        btnLogout.addActionListener(e -> {
+            authService.cerrarSesion();
+            LoginFrame login = new LoginFrame(authService, bitacoraService);
+            login.setVisible(true);
+            dispose();
         });
 
         add(panel);
