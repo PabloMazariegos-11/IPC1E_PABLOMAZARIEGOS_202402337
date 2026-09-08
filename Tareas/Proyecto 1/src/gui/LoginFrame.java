@@ -2,8 +2,6 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import model.Usuario;
@@ -66,12 +64,7 @@ public class LoginFrame extends JFrame {
         lblMensaje.setBounds(20, 175, 320, 25);
         panel.add(lblMensaje);
 
-        btnLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ejecutarLogin();
-            }
-        });
+        btnLogin.addActionListener(e -> ejecutarLogin());
 
         add(panel);
     }
@@ -101,7 +94,6 @@ public class LoginFrame extends JFrame {
             bitacoraService.registrarAccion(fechaHora, usuarioLogueado.getUsuario(), 
                 "AUTENTICACION", "LOGIN_OK", "Inicio de sesión correcto");
             
-            // Redirección directa al Menú Principal enviando el objeto Usuario
             MenuPrincipalFrame menu = new MenuPrincipalFrame(usuarioLogueado, authService, bitacoraService);
             menu.setVisible(true);
             this.dispose();
