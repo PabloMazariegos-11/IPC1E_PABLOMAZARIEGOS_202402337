@@ -7,6 +7,7 @@ import service.AdoptanteService;
 import service.AnimalService;
 import service.AuthService;
 import service.BitacoraService;
+import service.SolicitudService;
 
 public class MenuPrincipalFrame extends JFrame {
     private Usuario usuarioLogueado;
@@ -14,6 +15,7 @@ public class MenuPrincipalFrame extends JFrame {
     private BitacoraService bitacoraService;
     private AnimalService animalService;
     private AdoptanteService adoptanteService;
+    private SolicitudService solicitudService;
 
     public MenuPrincipalFrame(Usuario usuarioLogueado, AuthService authService, BitacoraService bitacoraService) {
         this.usuarioLogueado = usuarioLogueado;
@@ -21,6 +23,7 @@ public class MenuPrincipalFrame extends JFrame {
         this.bitacoraService = bitacoraService;
         this.animalService = new AnimalService(100);
         this.adoptanteService = new AdoptanteService(100);
+        this.solicitudService = new SolicitudService(100);
 
         setTitle("Centro de Rescate Animal - Menú Principal");
         setSize(500, 420);
@@ -78,6 +81,12 @@ public class MenuPrincipalFrame extends JFrame {
         btnAdoptantes.addActionListener(e -> {
             AdoptanteFrame adoptantesFrame = new AdoptanteFrame(usuarioLogueado, adoptanteService, bitacoraService, MenuPrincipalFrame.this);
             adoptantesFrame.setVisible(true);
+            setVisible(false);
+        });
+
+        btnSolicitudes.addActionListener(e -> {
+            SolicitudesFrame solicitudesFrame = new SolicitudesFrame(usuarioLogueado, solicitudService, animalService, adoptanteService, bitacoraService, MenuPrincipalFrame.this);
+            solicitudesFrame.setVisible(true);
             setVisible(false);
         });
 
