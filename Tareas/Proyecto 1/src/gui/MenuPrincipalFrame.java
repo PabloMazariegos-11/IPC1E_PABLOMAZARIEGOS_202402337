@@ -8,6 +8,8 @@ import service.AnimalService;
 import service.AuthService;
 import service.BitacoraService;
 import service.SolicitudService;
+import service.RescateService;
+import service.UbicacionService;
 
 public class MenuPrincipalFrame extends JFrame {
     private Usuario usuarioLogueado;
@@ -16,14 +18,20 @@ public class MenuPrincipalFrame extends JFrame {
     private AnimalService animalService;
     private AdoptanteService adoptanteService;
     private SolicitudService solicitudService;
+    private RescateService rescateService;
+    private UbicacionService ubicacionService;
 
     public MenuPrincipalFrame(Usuario usuarioLogueado, AuthService authService, BitacoraService bitacoraService) {
         this.usuarioLogueado = usuarioLogueado;
         this.authService = authService;
         this.bitacoraService = bitacoraService;
+        
+        // Inicialización de servicios con arreglos estáticos y matriz de 4x4
         this.animalService = new AnimalService(100);
         this.adoptanteService = new AdoptanteService(100);
         this.solicitudService = new SolicitudService(100);
+        this.rescateService = new RescateService(100);
+        this.ubicacionService = new UbicacionService(4, 4); 
 
         setTitle("Centro de Rescate Animal - Menú Principal");
         setSize(500, 420);
@@ -71,7 +79,7 @@ public class MenuPrincipalFrame extends JFrame {
         btnLogout.setBounds(180, 335, 120, 28);
         panel.add(btnLogout);
 
-        // Eventos
+        // Eventos de Navegación
         btnAnimales.addActionListener(e -> {
             AnimalesFrame animalesFrame = new AnimalesFrame(usuarioLogueado, animalService, bitacoraService, MenuPrincipalFrame.this);
             animalesFrame.setVisible(true);
@@ -87,6 +95,18 @@ public class MenuPrincipalFrame extends JFrame {
         btnSolicitudes.addActionListener(e -> {
             SolicitudesFrame solicitudesFrame = new SolicitudesFrame(usuarioLogueado, solicitudService, animalService, adoptanteService, bitacoraService, MenuPrincipalFrame.this);
             solicitudesFrame.setVisible(true);
+            setVisible(false);
+        });
+
+        btnRescates.addActionListener(e -> {
+            RescatesFrame rescatesFrame = new RescatesFrame(usuarioLogueado, rescateService, animalService, bitacoraService, MenuPrincipalFrame.this);
+            rescatesFrame.setVisible(true);
+            setVisible(false);
+        });
+
+        btnUbicaciones.addActionListener(e -> {
+            UbicacionesFrame ubicacionesFrame = new UbicacionesFrame(usuarioLogueado, ubicacionService, animalService, bitacoraService, MenuPrincipalFrame.this);
+            ubicacionesFrame.setVisible(true);
             setVisible(false);
         });
 
