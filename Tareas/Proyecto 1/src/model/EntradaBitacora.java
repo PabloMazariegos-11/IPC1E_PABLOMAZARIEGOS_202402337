@@ -23,4 +23,12 @@ public class EntradaBitacora {
     public String getTipoEvento() { return tipoEvento; }
     public String getDescripcion() { return descripcion; }
     public String getMotivoRechazo() { return motivoRechazo; }
+
+    @Override
+    public String toString() {
+        if (motivoRechazo != null && !motivoRechazo.trim().isEmpty()) {
+            return "[" + fechaHora + "] [" + usuario + "] [" + modulo + "] " + tipoEvento + ": " + descripcion + " | Motivo: " + motivoRechazo;
+        }
+        return "[" + fechaHora + "] [" + usuario + "] [" + modulo + "] " + tipoEvento + ": " + descripcion;
+    }
 }
