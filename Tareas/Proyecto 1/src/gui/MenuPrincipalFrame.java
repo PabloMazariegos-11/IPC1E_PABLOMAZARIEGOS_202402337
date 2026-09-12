@@ -110,6 +110,12 @@ public class MenuPrincipalFrame extends JFrame {
             setVisible(false);
         });
 
+        btnReportes.addActionListener(e -> {
+            ReportesFrame reportesFrame = new ReportesFrame(usuarioLogueado, animalService, bitacoraService, MenuPrincipalFrame.this);
+            reportesFrame.setVisible(true);
+            setVisible(false);
+        });
+
         btnLogout.addActionListener(e -> {
             authService.cerrarSesion();
             LoginFrame login = new LoginFrame(authService, bitacoraService);
