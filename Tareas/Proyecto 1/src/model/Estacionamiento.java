@@ -1,6 +1,7 @@
+package model;
 
 
-import java.nio.charset.CharacterCodingException;
+
 import java.util.Random;
 import java.util.Scanner;
 
