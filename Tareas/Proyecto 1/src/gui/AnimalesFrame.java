@@ -175,8 +175,15 @@ public class AnimalesFrame extends JFrame {
                 a.getEdadEstimada(), a.getEstadoClinico(), a.getEstadoAdopcion()
             });
         }
-    }
+         int perros = animalService.contarPorEspecie("Perro");
+            int gatos = animalService.contarPorEspecie("Gato");
 
+            System.out.println("===ESTADO ACTUAL DEL SISTEMA ===");
+            System.out.println("Perros registrados:" + perros);
+            System.out.println("Gatos Registrados:" + gatos);
+            System.out.println("=================================");
+    }
+            
     private void limpiarCampos() {
         txtCodigo.setText("");
         txtNombre.setText("");

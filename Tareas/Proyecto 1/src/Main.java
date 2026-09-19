@@ -3,8 +3,7 @@ import javax.swing.SwingUtilities;
 import service.AuthService;
 import service.BitacoraService;
 
-public class Main {
-    public static void main(String[] args) {
+public class Main {     public static void main(String[] args) {
         // Inicializar servicios principales con capacidad estática
         AuthService authService = new AuthService();
         BitacoraService bitacoraService = new BitacoraService(100);

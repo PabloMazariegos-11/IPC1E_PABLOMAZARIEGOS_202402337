@@ -1,0 +1,5 @@
+Codigo,Nombre,Especie,Edad,EstadoClinico,EstadoAdopcion
+A-001,Juan,Perro,2,EN_OBSERVACION,DISPONIBLE
+A-002,Jorge,Perro,3,EN_OBSERVACION,DISPONIBLE
+A-003,Jose,Perro,4,APTO,ADOPTADO
+A-004,Daniel,Perro,5,APTO,ADOPTADO

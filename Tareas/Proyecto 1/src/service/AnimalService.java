@@ -77,4 +77,17 @@ public class AnimalService {
     public int getContadorAnimales() {
         return contadorAnimales;
     }
+    // Cuenta cuántos animales activos existen de una especie específica
+    public int contarPorEspecie(String especieBuscada) {
+        if (especieBuscada == null) return 0;
+        
+        int contador = 0;
+        for (int i = 0; i < contadorAnimales; i++) {
+            if (!animales[i].getEstadoAdopcion().equals("ELIMINADO") && 
+                animales[i].getEspecie().equalsIgnoreCase(especieBuscada)) {
+                contador++;
+            }
+        }
+        return contador;
+    }
 }

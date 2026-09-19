@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+<meta charset='UTF-8'>
+<title>Bitácora del Sistema</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f6f9; }
+h1 { color: #2c3e50; text-align: center; }
+h2 { color: #34495e; margin-top: 25px; }
+table { width: 100%; border-collapse: collapse; margin-top: 10px; background-color: #fff; }
+th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+th { background-color: #2ecc71; color: white; }
+th.error { background-color: #e74c3c; color: white; }
+tr:nth-child(even) { background-color: #f2f2f2; }
+</style>
+</head>
+<body>
+<h1>Bitácora de Auditoría y Eventos</h1>
+<h2>Acciones Realizadas</h2>
+<table>
+<tr><th>Registro / Evento</th></tr>
+<tr><td>[19/09/2026 10:01] [admin1] [AUTENTICACION] LOGIN_OK: Inicio de sesión correcto</td></tr>
+<tr><td>[19/09/2026 10:02] [admin1] [ANIMALES] ALTA: Animal A-001 registrado</td></tr>
+<tr><td>[19/09/2026 10:03] [admin1] [ADOPTANTES] ALTA: Adoptante AD-007 registrado</td></tr>
+<tr><td>[19/09/2026 10:03] [admin1] [RESCATES] CREACION: Rescate R-001 registrado con prioridad ALTA</td></tr>
+<tr><td>[19/09/2026 10:04] [admin1] [ANIMALES] ALTA: Animal A-002 registrado</td></tr>
+<tr><td>[19/09/2026 10:04] [admin1] [RESCATES] CREACION: Rescate R-002 registrado con prioridad ALTA</td></tr>
+<tr><td>[19/09/2026 10:05] [admin1] [UBICACIONES] ASIGNAR: A-001 asignado a [2][2]</td></tr>
+<tr><td>[19/09/2026 10:06] [admin1] [UBICACIONES] ASIGNAR: A-002 asignado a [1][1]</td></tr>
+<tr><td>[19/09/2026 10:09] [admin1] [ANIMALES] ALTA: Animal A-003 registrado</td></tr>
+<tr><td>[19/09/2026 10:10] [admin1] [SOLICITUDES] CREACION: Solicitud S-001 registrada</td></tr>
+<tr><td>[19/09/2026 10:12] [admin1] [SOLICITUDES] CREACION: Solicitud S-002 registrada</td></tr>
+<tr><td>[19/09/2026 10:12] [admin1] [SOLICITUDES] ESTADO_CAMBIO: Solicitud S-002 pasó a APROBADA</td></tr>
+<tr><td>[19/09/2026 10:12] [admin1] [SOLICITUDES] ESTADO_CAMBIO: Solicitud S-001 pasó a APROBADA</td></tr>
+<tr><td>[19/09/2026 10:13] [admin1] [ADOPTANTES] ALTA: Adoptante AD-001 registrado</td></tr>
+<tr><td>[19/09/2026 10:15] [admin1] [ANIMALES] ALTA: Animal A-004 registrado</td></tr>
+<tr><td>[19/09/2026 10:15] [admin1] [SOLICITUDES] CREACION: Solicitud S-003 registrada</td></tr>
+<tr><td>[19/09/2026 10:16] [admin1] [SOLICITUDES] CREACION: Solicitud S-004 registrada</td></tr>
+<tr><td>[19/09/2026 10:17] [admin1] [SOLICITUDES] CREACION: Solicitud S-005 registrada</td></tr>
+<tr><td>[19/09/2026 10:17] [admin1] [SOLICITUDES] ESTADO_CAMBIO: Solicitud S-005 pasó a APROBADA</td></tr>
+<tr><td>[19/09/2026 10:17] [admin1] [SOLICITUDES] ESTADO_CAMBIO: Solicitud S-003 pasó a APROBADA</td></tr>
+<tr><td>[19/09/2026 10:18] [admin1] [REPORTES] GENERACION: Reporte HTML de animales generado</td></tr>
+</table>
+<h2>Errores y Validaciones Rechazadas</h2>
+<table>
+<tr><th class='error'>Registro / Evento de Error</th></tr>
+<tr><td>[19/09/2026 10:07] [admin1] [SOLICITUDES] ERROR: Fallo al crear solicitud | Motivo: Verifique existencia o estado del animal/adoptante</td></tr>
+<tr><td>[19/09/2026 10:07] [admin1] [SOLICITUDES] ERROR: Fallo al crear solicitud | Motivo: Verifique existencia o estado del animal/adoptante</td></tr>
+<tr><td>[19/09/2026 10:09] [admin1] [SOLICITUDES] ERROR: Fallo al crear solicitud | Motivo: Verifique existencia o estado del animal/adoptante</td></tr>
+<tr><td>[19/09/2026 10:10] [admin1] [SOLICITUDES] ERROR: Fallo al crear solicitud | Motivo: Verifique existencia o estado del animal/adoptante</td></tr>
+<tr><td>[19/09/2026 10:14] [admin1] [SOLICITUDES] ERROR: Fallo al crear solicitud | Motivo: Verifique existencia o estado del animal/adoptante</td></tr>
+</table>
+</body>
+</html>
